@@ -1,0 +1,696 @@
+/* ============================================================
+   Keyro — Component Styles
+   Premium Material Design-inspired dark/light UI
+   ============================================================ */
+
+/* ---- HEADER ---- */
+.k-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--divider);
+  background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.k-header__logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.k-header__title {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+
+.k-header__subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.2px;
+  margin-top: 1px;
+}
+
+.k-header__actions {
+  display: flex;
+  gap: 2px;
+}
+
+/* ---- ICON BUTTON (shared) ---- */
+.k-icon-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.k-icon-button:hover {
+  background-color: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.k-icon-button:active {
+  transform: scale(0.92);
+}
+
+/* ---- PASSWORD DISPLAY ---- */
+.k-password-display {
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  padding: 10px 12px 10px 14px;
+  margin: 10px 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: border-color var(--transition-fast);
+}
+
+.k-password-display:hover {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.k-password-display__text {
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  letter-spacing: 0.8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  user-select: all;
+  flex: 1;
+  scrollbar-width: none;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.k-password-display__text::-webkit-scrollbar {
+  display: none;
+}
+
+.k-password-display__actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.k-password-display__action {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  transition: all var(--transition-fast);
+}
+
+.k-password-display__action:hover {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.k-password-display__action:active {
+  transform: scale(0.9);
+}
+
+.k-password-display__action--success {
+  color: var(--success) !important;
+  animation: pulse 400ms ease;
+}
+
+.k-password-display__action--success:hover {
+  background-color: color-mix(in srgb, var(--success) 12%, transparent);
+}
+
+/* ---- STRENGTH INDICATOR ---- */
+.k-strength {
+  margin: 8px 14px 0;
+  height: 3px;
+  background-color: var(--surface-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.k-strength__bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1), background-color var(--transition-normal);
+  will-change: width;
+}
+
+.k-strength__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 4px 14px 0;
+  text-align: right;
+  transition: color var(--transition-normal);
+}
+
+/* ---- LENGTH CONTROL ---- */
+.k-length-control {
+  padding: 0 14px;
+  margin-top: 10px;
+}
+
+.k-length-control__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.k-length-control__label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.k-length-control__value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.k-length-control__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.k-length-control__btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.k-length-control__btn:hover:not(:disabled) {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.k-length-control__btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.k-length-control__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Slider styling */
+.k-length-control__slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 32px;
+  cursor: pointer;
+}
+
+.k-length-control__slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--primary) 0%,
+    var(--primary) var(--slider-fill, 20%),
+    var(--surface-2) var(--slider-fill, 20%),
+    var(--surface-2) 100%
+  );
+  border-radius: 2px;
+}
+
+.k-length-control__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(47, 109, 246, 0.4);
+  margin-top: -8px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 2px solid var(--bg);
+}
+
+.k-length-control__slider:hover::-webkit-slider-thumb {
+  transform: scale(1.15);
+  box-shadow: 0 2px 12px rgba(47, 109, 246, 0.5);
+}
+
+.k-length-control__slider:active::-webkit-slider-thumb {
+  transform: scale(1.05);
+}
+
+/* ---- CHARACTER OPTIONS ---- */
+.k-char-options {
+  padding: 0 14px;
+  margin-top: 10px;
+}
+
+.k-char-options__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.k-char-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-primary);
+  text-align: left;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.k-char-option:hover:not(:disabled) {
+  background-color: var(--surface-2);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.k-char-option:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.k-char-option:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Custom checkbox */
+.k-checkbox {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--text-tertiary);
+  border-radius: 5px;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.k-char-option[aria-checked="true"] .k-checkbox {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 1px 4px rgba(47, 109, 246, 0.35);
+}
+
+.k-checkbox svg {
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--transition-fast);
+}
+
+.k-char-option[aria-checked="true"] .k-checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.k-char-option__hint {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+/* ---- AMBIGUOUS TOGGLE ---- */
+.k-ambiguous-toggle {
+  padding: 0 14px;
+  margin-top: 4px;
+}
+
+.k-ambiguous-toggle .k-char-option {
+  font-size: 11.5px;
+  padding: 6px 10px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.k-ambiguous-toggle .k-char-option:hover {
+  background-color: var(--surface);
+  border-color: var(--divider);
+}
+
+.k-ambiguous-toggle .k-char-option__hint {
+  font-size: 10px;
+  font-family: var(--font-sans);
+}
+
+/* ---- SYMBOL INPUT ---- */
+.k-symbol-input {
+  padding: 0 14px;
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.k-symbol-input__field {
+  flex: 1;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  min-width: 0;
+}
+
+.k-symbol-input__field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 109, 246, 0.15);
+}
+
+.k-symbol-input__reset {
+  padding: 7px 12px;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.k-symbol-input__reset:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+/* ---- GENERATE BUTTON ---- */
+.k-generate-btn {
+  margin: 10px 14px 0;
+  width: calc(100% - 28px);
+  padding: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, #4A82FF 100%);
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(47, 109, 246, 0.3);
+}
+
+.k-generate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(47, 109, 246, 0.4);
+  background: linear-gradient(135deg, #4A82FF 0%, #6B9AFF 100%);
+}
+
+.k-generate-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(47, 109, 246, 0.3);
+  background: linear-gradient(135deg, var(--primary-active) 0%, var(--primary) 100%);
+}
+
+/* Ripple effect pseudo-element */
+.k-generate-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.k-generate-btn:active::after {
+  opacity: 1;
+}
+
+/* ---- PRIVACY BADGE ---- */
+.k-privacy-badge {
+  text-align: center;
+  padding: 6px 14px 8px;
+  font-size: 10.5px;
+  color: var(--text-tertiary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.2px;
+}
+
+/* ---- VALIDATION ERROR ---- */
+.k-validation-error {
+  padding: 8px 16px;
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---- PANELS (Settings / About) ---- */
+.k-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg);
+  animation: slideInRight var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+.k-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 16px;
+}
+
+.k-panel__title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+/* ---- SETTINGS SECTION ---- */
+.k-settings-section {
+  margin: 0 16px 24px;
+}
+
+.k-settings-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* ---- THEME SELECTOR ---- */
+.k-theme-selector {
+  display: flex;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  gap: 2px;
+  position: relative;
+}
+
+.k-theme-selector__option {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: calc(var(--radius-md) - 3px);
+  font-size: 13px;
+  font-weight: 600;
+  transition: color var(--transition-normal);
+  z-index: 2;
+  position: relative;
+  color: var(--text-secondary);
+}
+
+.k-theme-selector__option:hover {
+  color: var(--text-primary);
+}
+
+.k-theme-selector__option--active {
+  color: white !important;
+}
+
+.k-theme-selector__indicator {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  background: linear-gradient(135deg, var(--primary) 0%, #4A82FF 100%);
+  border-radius: calc(var(--radius-md) - 3px);
+  transition: transform var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(47, 109, 246, 0.25);
+}
+
+/* ---- LIGHT THEME ENHANCEMENTS ---- */
+[data-theme="light"] .k-password-display {
+  box-shadow: 0 1px 3px var(--shadow);
+}
+
+[data-theme="light"] .k-char-option {
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+[data-theme="light"] .k-generate-btn {
+  box-shadow: 0 4px 16px rgba(47, 109, 246, 0.2);
+}
+
+[data-theme="light"] .k-length-control__btn {
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+[data-theme="light"] .k-theme-selector {
+  box-shadow: 0 1px 3px var(--shadow);
+}
+
+/* ============================================================
+   Keyro V1.5 — Mode Selector & Sub-Segmented Controls
+   ============================================================ */
+
+/* ---- GENERATION MODE SELECTOR ---- */
+.k-mode-selector {
+  display: flex;
+  margin: 12px 16px 0;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  gap: 3px;
+}
+
+.k-mode-selector__btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: calc(var(--radius-md) - 3px);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.k-mode-selector__btn:hover:not(.k-mode-selector__btn--active) {
+  color: var(--text-primary);
+  background-color: var(--surface-2);
+}
+
+.k-mode-selector__btn--active {
+  background: linear-gradient(135deg, var(--primary) 0%, #4A82FF 100%);
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(47, 109, 246, 0.3);
+}
+
+/* ---- OPTION GROUP LABELS ---- */
+.k-option-group__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* ---- SUB-SEGMENTED CONTROL (Separators, Capitalization, PIN Length) ---- */
+.k-segmented-sub {
+  display: flex;
+  background-color: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  gap: 2px;
+  overflow-x: auto;
+}
+
+.k-segmented-sub__btn {
+  flex: 1;
+  padding: 7px 4px;
+  border-radius: calc(var(--radius-sm) - 2px);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.k-segmented-sub__btn:hover:not(.k-segmented-sub__btn--active) {
+  color: var(--text-primary);
+  background-color: var(--surface-2);
+}
+
+.k-segmented-sub__btn--active {
+  background-color: var(--primary);
+  color: white !important;
+}
+

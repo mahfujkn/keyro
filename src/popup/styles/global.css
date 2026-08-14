@@ -1,0 +1,87 @@
+@import './variables.css';
+@import './components.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 360px;
+  min-height: 540px;
+  background-color: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  width: 360px;
+  min-height: 540px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+  position: relative;
+}
+
+#root {
+  width: 360px;
+  min-height: 540px;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbars completely */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  color: var(--text-primary);
+}
+
+/* Image defaults */
+img, svg {
+  display: block;
+}
+
+/* Button defaults */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Input defaults */
+input {
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+}
+input:focus {
+  outline: none;
+}
