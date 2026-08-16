@@ -13,7 +13,7 @@
 ![Vite](https://img.shields.io/badge/Vite-8.2-646CFF.svg)
 ![100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-green.svg)
 
-[**Download Release (.ZIP)**](https://github.com/mahfujkn/keyro/releases) • [**Features**](#-key-features) • [**Installation**](#-quick-installation-from-github-release-zip) • [**Screenshots**](#-screenshots) • [**Architecture**](#-tech-stack--architecture)
+[**Download Release (.ZIP)**](https://github.com/mahfujkn/keyro/releases) • [**Features**](#-key-features) • [**Installation**](#-quick-installation-from-github-release-zip) • [**Screenshots**](#-screenshots) • [**Architecture**](https://github.com/mahfujkn/keyro#-tech-stack--architecture)
 
 </div>
 
