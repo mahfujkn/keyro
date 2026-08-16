@@ -12,6 +12,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-8.2-646CFF.svg)
 ![100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-green.svg)
+[![Release Version](https://img.shields.io/badge/Version-v1.5.0-orange.svg)](https://github.com/mahfujkn/keyro/releases)
 
 [**Download Release (.ZIP)**](https://github.com/mahfujkn/keyro/releases) • [**Features**](#-key-features) • [**Installation**](#-quick-installation-from-github-release-zip) • [**Screenshots**](#-screenshots)
 </div>
