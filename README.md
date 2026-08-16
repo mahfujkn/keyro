@@ -1,4 +1,4 @@
-# 🔑 Keyro - Secure Password, Passphrase & PIN Generator
+# Keyro - Secure Password, Passphrase & PIN Generator
 
 <div align="center">
 
