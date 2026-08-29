@@ -74,6 +74,18 @@ export interface StrengthResult {
   score: number;
 }
 
+/** Expiration time choices in minutes */
+export type RetentionMinutes = 15 | 30 | 60 | 120;
+
+/** Temporary saved history item */
+export interface HistoryItem {
+  id: string;
+  value: string;
+  mode: GeneratorMode;
+  timestamp: number;
+  expiresAt: number;
+}
+
 /** User preferences stored in chrome.storage.local */
 export interface UserPreferences {
   theme: Theme;
@@ -101,6 +113,9 @@ export interface UserPreferences {
     excludeRepeated: boolean;
     avoidSequential: boolean;
   };
+  enableHistory: boolean;
+  retentionMinutes: RetentionMinutes;
+  history?: HistoryItem[];
 }
 
 /** Full application state */
@@ -115,6 +130,9 @@ export interface AppState {
   view: ViewState;
   validationError: string | null;
   strength: StrengthResult;
+  enableHistory: boolean;
+  retentionMinutes: RetentionMinutes;
+  history: HistoryItem[];
 }
 
 /** Actions for the state reducer */
@@ -141,6 +159,13 @@ export type AppAction =
   | { type: 'SET_PIN_LENGTH'; length: number }
   | { type: 'TOGGLE_PIN_EXCLUDE_REPEATED' }
   | { type: 'TOGGLE_PIN_AVOID_SEQUENTIAL' }
+  // History actions
+  | { type: 'TOGGLE_ENABLE_HISTORY' }
+  | { type: 'SET_RETENTION_MINUTES'; minutes: RetentionMinutes }
+  | { type: 'ADD_HISTORY_ITEM'; item: HistoryItem }
+  | { type: 'DELETE_HISTORY_ITEM'; id: string }
+  | { type: 'CLEAR_HISTORY' }
+  | { type: 'PRUNE_EXPIRED_HISTORY' }
   // Shared actions
   | { type: 'SET_THEME'; theme: Theme }
   | { type: 'SET_COPY_STATUS'; status: CopyStatus }
@@ -185,6 +210,8 @@ export const DEFAULTS = {
   random: DEFAULT_RANDOM_CONFIG,
   passphrase: DEFAULT_PASSPHRASE_CONFIG,
   pin: DEFAULT_PIN_CONFIG,
+  enableHistory: false,
+  retentionMinutes: 30 as RetentionMinutes,
 };
 
 /** Characters considered visually ambiguous */

@@ -12,7 +12,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-8.2-646CFF.svg)
 ![100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-green.svg)
-[![Release Version](https://img.shields.io/badge/Version-v1.5.0-orange.svg)](https://github.com/mahfujkn/keyro/releases)
+[![Release Version](https://img.shields.io/badge/Version-v2.0.0-orange.svg)](https://github.com/mahfujkn/keyro/releases)
 
 [**Download Release (.ZIP)**](https://github.com/mahfujkn/keyro/releases) • [**Features**](#-key-features) • [**Installation**](#-quick-installation-from-github-release-zip) • [**Screenshots**](#-screenshots)
 </div>
@@ -21,11 +21,11 @@
 
 ## 📖 Overview
 
-**Keyro** is a modern, privacy-first browser extension for generating secure passwords, memorable passphrases, and numeric PINs directly in your Chromium-based browser.
+**Keyro** is a modern, privacy-first browser extension for generating secure passwords, memorable passphrases, and numeric PINs directly in your Chromium-based browser (Google Chrome, Microsoft Edge, Brave, etc.).
 
-Built with **React 18, TypeScript, Vite, and the Web Crypto API**, Keyro performs credential generation entirely on your device. There are no accounts, cloud servers, analytics, external APIs, or network calls involved in normal operation.
+Built with **React 18, TypeScript, Vite, and the Web Crypto API**, Keyro performs all credential generation entirely on your local device. There are no accounts, cloud servers, analytics, external APIs, or network calls involved in normal operation.
 
-Cryptographic randomness is generated locally using `crypto.getRandomValues()` with rejection sampling, helping avoid the statistical bias associated with naive random selection.
+Cryptographic randomness is generated locally using `crypto.getRandomValues()` with rejection sampling, helping avoid statistical modulo bias associated with naive random selection.
 
 ---
 
@@ -36,6 +36,14 @@ Cryptographic randomness is generated locally using `crypto.getRandomValues()` w
   - **Random Password Mode**: Customizable length from 4–64 characters, with lowercase, uppercase, numbers, symbols, custom symbol sets, and ambiguous character exclusion (`O`, `0`, `I`, `l`, `1`).
   - **Passphrase Mode**: Generates memorable multi-word passphrases using 3–10 words with customizable separators (`-`, ` `, `_`, `.`, custom), capitalization styles, optional numbers, and symbols.
   - **PIN Mode**: Generates secure 4, 6, 8, 10, or 12-digit PINs with unique-digit enforcement and sequential pattern rejection such as `1234`, `6543`, and `1111`.
+- 🕒 **Optional Temporary Copy History**:
+  - **Privacy First**: Disabled by default.
+  - **Local Storage Only**: Auto-saves copied credentials locally for a customizable duration (15m, 30m, 1h, 2h).
+  - **Full Management**: Re-copy or delete any item anytime, or clear all history with one click.
+  - **Auto Expire**: Expired items are automatically pruned and deleted from local storage.
+- 🗂️ **Tabbed Settings Navigation**:
+  - **General Tab**: Appearance controls and active generator mode configuration.
+  - **Copy History Tab**: Switch toggle, auto-expire retention selector, history list, and privacy note.
 - 🎨 **Material Design Dark & Light UI**:
   - Responsive and compact interface.
   - Dark, Light, and System theme support.
@@ -47,7 +55,7 @@ Cryptographic randomness is generated locally using `crypto.getRandomValues()` w
   - Visible keyboard focus rings.
   - Full keyboard navigation.
   - `prefers-reduced-motion` support.
-- 🧪 **Tested Core Logic**: Vitest unit test suite with 46 passing tests.
+- 🧪 **Tested Core Logic**: Vitest unit test suite with 49 passing tests.
 
 ---
 
@@ -56,17 +64,27 @@ Cryptographic randomness is generated locally using `crypto.getRandomValues()` w
 <div align="center">
 
 ### 1. Random Password Mode
-<img src="./docs/screenshots/random_mode.png" width="260" alt="Random Password Mode" />
+<img src="./docs/screenshots/home-random.jpeg" width="320" alt="Random Password Mode" />
 
 ---
 
 ### 2. Passphrase Mode
-<img src="./docs/screenshots/passphrase_mode.png" width="260" alt="Passphrase Mode" />
+<img src="./docs/screenshots/home-pass.jpeg" width="320" alt="Passphrase Mode" />
 
 ---
 
-### 3. About Panel
-<img src="./docs/screenshots/about_panel.png" width="260" alt="About Panel" />
+### 3. PIN Mode
+<img src="./docs/screenshots/home-pin.jpeg" width="320" alt="PIN Mode" />
+
+---
+
+### 4. Settings Panel (General)
+<img src="./docs/screenshots/settings.jpeg" width="320" alt="Settings Panel General" />
+
+---
+
+### 5. Settings Panel (Temporary Copy History)
+<img src="./docs/screenshots/settings-copy-history.jpeg" width="320" alt="Settings Panel Copy History" />
 
 </div>
 
@@ -76,8 +94,8 @@ Cryptographic randomness is generated locally using `crypto.getRandomValues()` w
 
 No coding or build tools are required. Install the pre-built extension in a few simple steps:
 
-1. Go to [**Keyro GitHub Releases**](https://github.com/mahfujkn/keyro/releases) and download the latest `keyro-v1.5.0-extension.zip`.
-2. Extract / Unzip the downloaded `keyro-v1.5.0-extension.zip` file to a folder on your computer.
+1. Go to [**Keyro GitHub Releases**](https://github.com/mahfujkn/keyro/releases) and download the latest `keyro-v2.0.0-extension.zip`.
+2. Extract / Unzip the downloaded `keyro-v2.0.0-extension.zip` file to a folder on your computer.
 3. Open your Chromium-based browser:
    - **Google Chrome / Brave**: navigate to `chrome://extensions/`
    - **Microsoft Edge**: navigate to `edge://extensions/`
@@ -110,22 +128,22 @@ Keyro bundles the **EFF Short Wordlist 1**, containing 1,296 curated words creat
 | **UI Framework** | React 18, Custom CSS Custom Properties |
 | **Design System** | Material Design aesthetic |
 | **Build System** | Vite 8, Rollup |
-| **Testing** | Vitest (46 unit tests passing) |
+| **Testing** | Vitest (49 unit tests passing) |
 | **Extension Format** | Chrome Manifest V3 |
 
 ### Project Structure
 
 ```text
 keyro/
-├── docs/screenshots/       # Extension UI screenshots
+├── docs/screenshots/       # Extension UI screenshots (5 high-res previews)
 ├── public/                 # Manifest V3 configuration & icons
 ├── src/
-│   ├── lib/                # Core generator modules (passphrase, pin, generator, strength, wordlist)
+│   ├── lib/                # Core generator modules (passphrase, pin, generator, strength, wordlist, storage)
 │   ├── hooks/              # Custom React hooks (useGenerator, useTheme)
 │   ├── popup/              # React UI components & styles
 │   └── types/              # Shared TypeScript definitions
-├── tests/                  # Vitest unit test suite
-├── keyro-v1.5.0-extension.zip # Pre-built release package
+├── tests/                  # Vitest unit test suite (49 passing tests)
+├── keyro-v2.0.0-extension.zip # Pre-built release package
 ├── popup.html              # Main extension entry HTML
 ├── vite.config.ts          # Vite build configuration
 └── package.json

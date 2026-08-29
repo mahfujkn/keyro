@@ -24,7 +24,7 @@ export const AboutPanel: React.FC<AboutPanelProps> = ({ onBack }) => {
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
         </button>
-        <div className="k-panel__title">About Keyro V1.5</div>
+        <div className="k-panel__title">About Keyro V2.0</div>
       </div>
       
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 16px' }}>
@@ -33,8 +33,8 @@ export const AboutPanel: React.FC<AboutPanelProps> = ({ onBack }) => {
           <path d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M12 8C10.8954 8 10 8.89543 10 10C10 10.7403 10.4022 11.3866 11 11.7324V15H13V11.7324C13.5978 11.3866 14 10.7403 14 10C14 8.89543 13.1046 8 12 8Z" fill="var(--primary)"/>
         </svg>
-        <div style={{ fontSize: '18px', fontWeight: 700 }}>Keyro v1.5.0</div>
-        <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>Passwords • Passphrases • PINs</div>
+        <div style={{ fontSize: '18px', fontWeight: 700 }}>Keyro v2.0.0</div>
+        <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>Passwords • Passphrases • PINs • Temporary History</div>
       </div>
 
       <div className="k-settings-section">
@@ -45,6 +45,7 @@ export const AboutPanel: React.FC<AboutPanelProps> = ({ onBack }) => {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '12.5px', color: 'var(--text-primary)', lineHeight: 1.9 }}>
           {[
             'Random passwords, Passphrases & PINs',
+            'Optional local temporary copy history',
             'No accounts, login or cloud dependencies',
             'No tracking, analytics or telemetry',
             'Bundled EFF public domain wordlist',

@@ -1,17 +1,28 @@
-import { UserPreferences, DEFAULTS } from '../types';
+import { UserPreferences, DEFAULTS, HistoryItem } from '../types';
+
+export function filterExpiredHistory(history?: HistoryItem[]): HistoryItem[] {
+  if (!Array.isArray(history)) return [];
+  const now = Date.now();
+  return history.filter(item => item && typeof item.value === 'string' && item.expiresAt > now);
+}
 
 export async function savePreferences(prefs: Partial<UserPreferences>): Promise<void> {
   try {
+    const toSave = { ...prefs };
+    if (toSave.history) {
+      toSave.history = filterExpiredHistory(toSave.history);
+    }
+
     if (typeof chrome !== 'undefined' && chrome?.storage?.local) {
       await new Promise<void>((resolve) => {
-        chrome.storage.local.set(prefs, () => {
+        chrome.storage.local.set(toSave, () => {
           resolve();
         });
       });
     } else if (typeof localStorage !== 'undefined') {
       const existing = localStorage.getItem('keyro_prefs');
       const parsed = existing ? JSON.parse(existing) : {};
-      const updated = { ...parsed, ...prefs };
+      const updated = { ...parsed, ...toSave };
       localStorage.setItem('keyro_prefs', JSON.stringify(updated));
     }
   } catch (e) {
@@ -26,6 +37,9 @@ export async function loadPreferences(): Promise<UserPreferences> {
     random: { ...DEFAULTS.random },
     passphrase: { ...DEFAULTS.passphrase },
     pin: { ...DEFAULTS.pin },
+    enableHistory: DEFAULTS.enableHistory,
+    retentionMinutes: DEFAULTS.retentionMinutes,
+    history: [],
   };
 
   try {
@@ -45,6 +59,9 @@ export async function loadPreferences(): Promise<UserPreferences> {
       if (result.random) prefs.random = { ...prefs.random, ...result.random };
       if (result.passphrase) prefs.passphrase = { ...prefs.passphrase, ...result.passphrase };
       if (result.pin) prefs.pin = { ...prefs.pin, ...result.pin };
+      if (typeof result.enableHistory === 'boolean') prefs.enableHistory = result.enableHistory;
+      if (result.retentionMinutes) prefs.retentionMinutes = result.retentionMinutes;
+      if (Array.isArray(result.history)) prefs.history = filterExpiredHistory(result.history);
     } else if (typeof localStorage !== 'undefined') {
       const existing = localStorage.getItem('keyro_prefs');
       if (existing) {
@@ -54,6 +71,9 @@ export async function loadPreferences(): Promise<UserPreferences> {
         if (parsed.random) prefs.random = { ...prefs.random, ...parsed.random };
         if (parsed.passphrase) prefs.passphrase = { ...prefs.passphrase, ...parsed.passphrase };
         if (parsed.pin) prefs.pin = { ...prefs.pin, ...parsed.pin };
+        if (typeof parsed.enableHistory === 'boolean') prefs.enableHistory = parsed.enableHistory;
+        if (parsed.retentionMinutes) prefs.retentionMinutes = parsed.retentionMinutes;
+        if (Array.isArray(parsed.history)) prefs.history = filterExpiredHistory(parsed.history);
       }
     }
   } catch (e) {
