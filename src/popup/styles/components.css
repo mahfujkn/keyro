@@ -427,9 +427,9 @@
 
 /* ---- GENERATE BUTTON ---- */
 .k-generate-btn {
-  margin: 10px 14px 0;
+  margin: 14px 14px 14px;
   width: calc(100% - 28px);
-  padding: 12px;
+  padding: 13px;
   background: linear-gradient(135deg, var(--primary) 0%, #4A82FF 100%);
   border-radius: var(--radius-md);
   color: white;

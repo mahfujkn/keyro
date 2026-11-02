@@ -12,7 +12,6 @@ import { PassphraseOptions } from './components/PassphraseOptions';
 import { PinOptions } from './components/PinOptions';
 import { SymbolInput } from './components/SymbolInput';
 import { GenerateButton } from './components/GenerateButton';
-import { PrivacyBadge } from './components/PrivacyBadge';
 import { SettingsPanel } from './components/SettingsPanel';
 import { AboutPanel } from './components/AboutPanel';
 
@@ -101,9 +100,6 @@ const App: React.FC = () => {
 
         {/* GENERATE BUTTON */}
         <GenerateButton onClick={generate} />
-
-        {/* PRIVACY BADGE */}
-        <PrivacyBadge />
       </div>
     </div>
   );
